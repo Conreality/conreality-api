@@ -1,0 +1,17 @@
+/* This is free and unencumbered software released into the public domain. */
+
+syntax = "proto3";
+
+package Conreality.RPC;
+
+service Master {
+  rpc Hello (HelloRequest) returns (HelloResponse) {}
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloResponse {
+  string name = 1;
+}
