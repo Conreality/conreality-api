@@ -5,13 +5,27 @@ syntax = "proto3";
 package Conreality.RPC;
 
 service Master {
+  rpc Ping (PingRequest) returns (PongResponse) {}
   rpc Hello (HelloRequest) returns (HelloResponse) {}
+  rpc SendMessage (SendMessageRequest) returns (SendMessageResponse) {}
 }
 
+message PingRequest {}
+
+message PongResponse {}
+
 message HelloRequest {
-  string name = 1;
+  string version = 1;
 }
 
 message HelloResponse {
-  string name = 1;
+  string version = 1;
+}
+
+message SendMessageRequest {
+  string text = 1;
+}
+
+message SendMessageResponse {
+  uint64 id = 1;
 }
