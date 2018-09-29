@@ -1,10 +1,13 @@
-PACKAGE :=
+PACKAGE := conreality-api
 VERSION := $(shell cat VERSION)
 
 PANDOC  ?= pandoc
+PROTOC  ?= protoc
+PYTHON2 ?= python
+PYTHON3 ?= python3
 
-SOURCES :=
-TARGETS :=
+SOURCES := conreality_nexus.proto conreality_master.proto conreality_slave.proto
+TARGETS := c cpp csharp dart elixir go java js objc php python2 python3 ruby swift
 
 %.html: %.rst
 	$(PANDOC) -o $@ -t html5 -s $<
@@ -26,7 +29,7 @@ uninstall:
 	@echo "not implemented"; exit 2 # TODO
 
 clean:
-	@rm -f *~ $(TARGETS)
+	@rm -Rf *~ $(TARGETS)
 
 distclean: clean
 
@@ -35,3 +38,73 @@ mostlyclean: clean
 .PHONY: check dist install clean distclean mostlyclean
 .SECONDARY:
 .SUFFIXES:
+
+c: $(SOURCES)
+	mkdir -p $@
+	$(PROTOC) -I. --c_out=$@ $^
+
+cpp: $(SOURCES)
+	mkdir -p $@
+	$(PROTOC) -I. --cpp_out=$@ $^
+	$(PROTOC) -I. --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` --grpc_out=$@ $^
+
+csharp: $(SOURCES)
+	mkdir -p $@
+	$(PROTOC) -I. --csharp_out=$@ $^
+	$(PROTOC) -I. --plugin=protoc-gen-grpc=`which grpc_csharp_plugin` --grpc_out=$@ $^
+
+dart: $(SOURCES)
+	mkdir -p $@
+	$(PROTOC) -I. --plugin=$(HOME)/.pub-cache/bin/protoc-gen-dart --dart_out=grpc:$@ $^
+
+elixir: $(SOURCES)
+	mkdir -p $@
+	$(PROTOC) -I. --plugin=$(HOME)/.mix/escripts/protoc-gen-elixir --elixir_out=plugins=grpc:$@ $^
+
+go: $(SOURCES)
+	mkdir -p $@
+	$(PROTOC) -I. --plugin=$(GOPATH)/bin/protoc-gen-go --go_out=plugins=grpc:$@ $^
+
+java: $(SOURCES)
+	mkdir -p $@
+	$(PROTOC) -I. --java_out=$@ $^
+
+js: $(SOURCES)
+	mkdir -p $@
+	$(PROTOC) -I. --js_out=$@ $^
+	#$(PROTOC) -I. --plugin=protoc-gen-grpc=`which grpc_node_plugin` --grpc_out=$@ $^
+
+objc: $(SOURCES)
+	mkdir -p $@
+	$(PROTOC) -I. --objc_out=$@ $^
+	$(PROTOC) -I. --plugin=protoc-gen-grpc=`which grpc_objective_c_plugin` --grpc_out=$@ $^
+
+php: $(SOURCES)
+	mkdir -p $@
+	$(PROTOC) -I. --php_out=$@ $^
+	$(PROTOC) -I. --plugin=protoc-gen-grpc=`which grpc_php_plugin` --grpc_out=$@ $^
+
+python: python2
+
+python2: $(SOURCES)
+	mkdir -p $@
+	$(PROTOC) -I. --python_out=$@ $^
+	$(PROTOC) -I. --plugin=protoc-gen-grpc=`which grpc_python_plugin` --grpc_out=$@ $^
+	#$(PYTHON2) -m grpc_tools.protoc -I. --python_out=$@ --grpc_python_out=$@ $^
+
+python3: $(SOURCES)
+	mkdir -p $@
+	$(PROTOC) -I. --python_out=$@ $^
+	$(PROTOC) -I. --plugin=protoc-gen-grpc=`which grpc_python_plugin` --grpc_out=$@ $^
+	#$(PYTHON3) -m grpc_tools.protoc -I. --python_out=$@ --grpc_python_out=$@ $^
+
+ruby: $(SOURCES)
+	mkdir -p $@
+	$(PROTOC) -I. --ruby_out=$@ $^
+	$(PROTOC) -I. --plugin=protoc-gen-grpc=`which grpc_ruby_plugin` --grpc_out=$@ $^
+
+swift: $(SOURCES)
+	mkdir -p $@
+	$(PROTOC) -I. --swift_out=$@ $^
+
+.PHONY: $(TARGETS)

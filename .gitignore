@@ -6,3 +6,20 @@
 
 # rst2html outputs
 *.html
+
+# Protocol Buffers outputs
+c
+cpp
+csharp
+dart
+elixir
+go
+java
+js
+objc
+php
+python
+python2
+python3
+ruby
+swift
