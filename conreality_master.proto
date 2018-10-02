@@ -8,12 +8,14 @@ import public "conreality_common.proto";
 package Conreality.RPC;
 
 service Public {
+  rpc Authenticate (AuthRequest) returns (AuthResponse) {}
+  rpc Bye (EmptyRequest) returns (EmptyResponse) {}
   rpc Hello (HelloRequest) returns (HelloResponse) {}
   rpc Ping (PingRequest) returns (PongResponse) {}
-  rpc Authenticate (AuthRequest) returns (AuthResponse) {}
 }
 
-service Authenticated {
+service Session {
+  rpc Ping (PingRequest) returns (PongResponse) {}
   rpc SendEvent (SendEventRequest) returns (IDResponse) {}
   rpc SendMessage (SendMessageRequest) returns (IDResponse) {}
   rpc UpdatePlayer (UpdatePlayerRequest) returns (EmptyResponse) {}

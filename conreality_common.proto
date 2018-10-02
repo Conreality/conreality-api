@@ -4,6 +4,8 @@ syntax = "proto3";
 
 package Conreality.RPC;
 
+message EmptyRequest {}
+
 message EmptyResponse {}
 
 message IDResponse {
