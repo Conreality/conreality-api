@@ -2,6 +2,7 @@
 
 syntax = "proto3";
 
+import public "conreality_model.proto";
 import public "conreality_common.proto";
 
 package Conreality.RPC;
@@ -12,12 +13,6 @@ service Master {
   rpc SendEvent (SendEventRequest) returns (IDResponse) {}
   rpc SendMessage (SendMessageRequest) returns (IDResponse) {}
   rpc UpdatePlayer (UpdatePlayerRequest) returns (EmptyResponse) {}
-}
-
-message EmptyResponse {}
-
-message IDResponse {
-  uint64 id = 1;
 }
 
 message SendEventRequest {
