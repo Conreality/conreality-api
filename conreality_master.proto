@@ -7,15 +7,29 @@ import public "conreality_common.proto";
 package Conreality.RPC;
 
 service Master {
-  rpc Ping (PingRequest) returns (PongResponse) {}
   rpc Hello (HelloRequest) returns (HelloResponse) {}
-  rpc SendMessage (SendMessageRequest) returns (SendMessageResponse) {}
+  rpc Ping (PingRequest) returns (PongResponse) {}
+  rpc SendEvent (SendEventRequest) returns (IDResponse) {}
+  rpc SendMessage (SendMessageRequest) returns (IDResponse) {}
+  rpc UpdatePlayer (UpdatePlayerRequest) returns (EmptyResponse) {}
+}
+
+message EmptyResponse {}
+
+message IDResponse {
+  uint64 id = 1;
+}
+
+message SendEventRequest {
+  string predicate = 1;
+  string subjectUUID = 2;
+  string objectUUID = 3;
 }
 
 message SendMessageRequest {
   string text = 1;
 }
 
-message SendMessageResponse {
-  uint64 id = 1;
+message UpdatePlayerRequest {
+  uint32 heartbeat = 1;
 }
