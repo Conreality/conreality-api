@@ -6,8 +6,13 @@ PROTOC  ?= protoc
 PYTHON2 ?= python
 PYTHON3 ?= python3
 
-SOURCES := conreality_nexus.proto conreality_master.proto conreality_slave.proto
 TARGETS := c cpp csharp dart elixir go java js objc php python2 python3 ruby swift
+
+SOURCES := \
+  conreality_common.proto \
+  conreality_nexus.proto  \
+  conreality_master.proto \
+  conreality_slave.proto
 
 %.html: %.rst
 	$(PANDOC) -o $@ -t html5 -s $<
