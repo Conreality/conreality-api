@@ -7,24 +7,39 @@ import public "conreality_common.proto";
 
 package Conreality.RPC;
 
-service Master {
+service Public {
   rpc Hello (HelloRequest) returns (HelloResponse) {}
   rpc Ping (PingRequest) returns (PongResponse) {}
+  rpc Authenticate (AuthRequest) returns (AuthResponse) {}
+}
+
+service Authenticated {
   rpc SendEvent (SendEventRequest) returns (IDResponse) {}
   rpc SendMessage (SendMessageRequest) returns (IDResponse) {}
   rpc UpdatePlayer (UpdatePlayerRequest) returns (EmptyResponse) {}
 }
 
+message AuthRequest {
+  string player_nick = 1; // TODO
+}
+
+message AuthResponse {
+  uint64 session_id = 1;
+}
+
 message SendEventRequest {
-  string predicate = 1;
-  string subjectUUID = 2;
-  string objectUUID = 3;
+  uint64 session_id = 1;
+  string predicate = 2;
+  string subject_uuid = 3;
+  string object_uuid = 4;
 }
 
 message SendMessageRequest {
-  string text = 1;
+  uint64 session_id = 1;
+  string text = 2;
 }
 
 message UpdatePlayerRequest {
-  uint32 heartbeat = 1;
+  uint64 session_id = 1;
+  uint32 heartbeat = 2;
 }
