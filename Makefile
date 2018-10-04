@@ -9,10 +9,11 @@ PYTHON3 ?= python3
 TARGETS := c cpp csharp dart elixir go java js objc ocaml php python2 python3 ruby swift
 
 SOURCES := \
-  conreality_common.proto \
-  conreality_nexus.proto  \
-  conreality_master.proto \
-  conreality_slave.proto
+  conreality/rpc/common.proto \
+  conreality/rpc/master.proto \
+  conreality/rpc/model.proto  \
+  conreality/rpc/nexus.proto  \
+  conreality/rpc/slave.proto
 
 %.html: %.rst
 	$(PANDOC) -o $@ -t html5 -s $<
@@ -98,7 +99,7 @@ objc: $(SOURCES)
 # See: https://github.com/mransan/ocaml-protoc
 ocaml: $(SOURCES)
 	mkdir -p $@
-	ocaml-protoc -binary -ml_out $@ conreality_common.proto
+	ocaml-protoc -binary -ml_out $@ conreality/rpc/common.proto
 
 # See: https://github.com/grpc/grpc/tree/master/src/php
 php: $(SOURCES)

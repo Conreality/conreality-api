@@ -2,8 +2,8 @@
 
 syntax = "proto3";
 
-import public "conreality_model.proto";
-import public "conreality_common.proto";
+import public "conreality/rpc/model.proto";
+import public "conreality/rpc/common.proto";
 
 package Conreality.RPC;
 
