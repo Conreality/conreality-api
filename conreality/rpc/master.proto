@@ -26,7 +26,7 @@ service Session {
   rpc Ping (Nothing) returns (Nothing) {}
 
   // Game
-  rpc JoinGame (Nothing) returns (Nothing) {}
+  rpc JoinGame (Nothing) returns (PlayerID) {}
   rpc LeaveGame (String) returns (Nothing) {}
   rpc PauseGame (Nothing) returns (Nothing) {}
   rpc StartGame (Nothing) returns (Nothing) {}
@@ -44,11 +44,11 @@ service Session {
   rpc UpdatePlayer (PlayerStatus) returns (Nothing) {}
 
   // Units
-  rpc LeaveUnit (UnitID) returns (Nothing) {}
-  rpc ListUnits (Nothing) returns (UnitList) {}
   rpc DisbandUnit (UnitID) returns (Nothing) {}
   rpc FormUnit (String) returns (UnitID) {}
   rpc JoinUnit (UnitID) returns (Nothing) {}
+  rpc LeaveUnit (UnitID) returns (Nothing) {}
+  rpc ListUnits (Nothing) returns (UnitList) {}
 
   // Targets
   rpc DesignateTarget (Target) returns (TargetID) {}
