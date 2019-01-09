@@ -3,3 +3,39 @@
 syntax = "proto3";
 
 package Conreality.RPC;
+
+message EventID {
+  uint64 value = 1;
+}
+
+message MessageID {
+  uint64 value = 1;
+}
+
+message PlayerID {
+  uint32 value = 1;
+}
+
+message PlayerList {
+  repeated PlayerID values = 1;
+}
+
+message SessionID {
+  uint64 value = 1;
+}
+
+message TargetID {
+  uint32 value = 1;
+}
+
+message TargetList {
+  repeated TargetID values = 1;
+}
+
+message UnitID {
+  uint32 value = 1;
+}
+
+message UnitList {
+  repeated UnitID values = 1;
+}

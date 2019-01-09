@@ -7,47 +7,11 @@ import public "conreality/rpc/common.proto";
 
 package Conreality.RPC;
 
-service Public {
+service Public { // TODO
   rpc Authenticate (AuthRequest) returns (AuthResponse) {}
-  rpc Bye (EmptyRequest) returns (EmptyResponse) {}
+  rpc Bye (Nothing) returns (Nothing) {}
   rpc Hello (HelloRequest) returns (HelloResponse) {}
-  rpc Ping (PingRequest) returns (PongResponse) {}
-}
-
-service Session {
-  rpc Ping (PingRequest) returns (PongResponse) {}
-
-  // Game
-  rpc JoinGame (EmptyRequest) returns (EmptyResponse) {}
-  rpc LeaveGame (EmptyRequest) returns (EmptyResponse) {}
-  rpc PauseGame (EmptyRequest) returns (EmptyResponse) {}
-  rpc StartGame (EmptyRequest) returns (EmptyResponse) {}
-  rpc StopGame (EmptyRequest) returns (EmptyResponse) {}
-
-  // Theater
-  rpc DefineTheater (EmptyRequest) returns (EmptyResponse) {}
-
-  // Mission
-  rpc DefineMission (EmptyRequest) returns (EmptyResponse) {}
-
-  // Players
-  rpc AddPlayer (EmptyRequest) returns (EmptyResponse) {}
-  rpc ListPlayers (EmptyRequest) returns (EmptyResponse) {}
-  rpc UpdatePlayer (UpdatePlayerRequest) returns (EmptyResponse) {}
-
-  // Units
-  rpc LeaveUnit (EmptyRequest) returns (EmptyResponse) {}
-  rpc ListUnits (EmptyRequest) returns (EmptyResponse) {}
-  rpc DisbandUnit (EmptyRequest) returns (EmptyResponse) {}
-  rpc FormUnit (EmptyRequest) returns (EmptyResponse) {}
-  rpc JoinUnit (EmptyRequest) returns (EmptyResponse) {}
-
-  // Targets
-  rpc DesignateTarget (EmptyRequest) returns (EmptyResponse) {}
-
-  // Broadcasts
-  rpc SendEvent (SendEventRequest) returns (IDResponse) {}
-  rpc SendMessage (SendMessageRequest) returns (IDResponse) {}
+  rpc Ping (Nothing) returns (Nothing) {}
 }
 
 message AuthRequest {
@@ -58,19 +22,64 @@ message AuthResponse {
   uint64 session_id = 1;
 }
 
-message SendEventRequest {
-  uint64 session_id = 1;
-  string predicate = 2;
-  string subject_uuid = 3;
-  string object_uuid = 4;
+service Session {
+  rpc Ping (Nothing) returns (Nothing) {}
+
+  // Game
+  rpc JoinGame (Nothing) returns (Nothing) {}
+  rpc LeaveGame (String) returns (Nothing) {}
+  rpc PauseGame (Nothing) returns (Nothing) {}
+  rpc StartGame (Nothing) returns (Nothing) {}
+  rpc StopGame (Nothing) returns (Nothing) {}
+
+  // Theater
+  rpc DefineTheater (Box) returns (Nothing) {}
+
+  // Mission
+  rpc DefineMission (String) returns (Nothing) {}
+
+  // Players
+  rpc AddPlayer (Player) returns (PlayerID) {}
+  rpc ListPlayers (Nothing) returns (PlayerList) {}
+  rpc UpdatePlayer (PlayerStatus) returns (Nothing) {}
+
+  // Units
+  rpc LeaveUnit (UnitID) returns (Nothing) {}
+  rpc ListUnits (Nothing) returns (UnitList) {}
+  rpc DisbandUnit (UnitID) returns (Nothing) {}
+  rpc FormUnit (String) returns (UnitID) {}
+  rpc JoinUnit (UnitID) returns (Nothing) {}
+
+  // Targets
+  rpc DesignateTarget (Target) returns (TargetID) {}
+  rpc ListTargets (Nothing) returns (TargetList) {}
+
+  // Broadcasts
+  rpc SendEvent (Event) returns (EventID) {}
+  rpc SendMessage (Message) returns (MessageID) {}
 }
 
-message SendMessageRequest {
+message Player {
+  string name = 1;
+}
+
+message Target {
+  // TODO
+}
+
+message Event {
+  uint64 session_id = 1;
+  string predicate = 2;
+  UUID subject_uuid = 3;
+  UUID object_uuid = 4;
+}
+
+message Message {
   uint64 session_id = 1;
   string text = 2;
 }
 
-message UpdatePlayerRequest {
+message PlayerStatus {
   uint64 session_id = 1;
   uint32 heartbeat = 2;
 }
