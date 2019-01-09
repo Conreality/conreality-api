@@ -16,9 +16,38 @@ service Public {
 
 service Session {
   rpc Ping (PingRequest) returns (PongResponse) {}
+
+  // Game
+  rpc JoinGame (EmptyRequest) returns (EmptyResponse) {}
+  rpc LeaveGame (EmptyRequest) returns (EmptyResponse) {}
+  rpc PauseGame (EmptyRequest) returns (EmptyResponse) {}
+  rpc StartGame (EmptyRequest) returns (EmptyResponse) {}
+  rpc StopGame (EmptyRequest) returns (EmptyResponse) {}
+
+  // Theater
+  rpc DefineTheater (EmptyRequest) returns (EmptyResponse) {}
+
+  // Mission
+  rpc DefineMission (EmptyRequest) returns (EmptyResponse) {}
+
+  // Players
+  rpc AddPlayer (EmptyRequest) returns (EmptyResponse) {}
+  rpc ListPlayers (EmptyRequest) returns (EmptyResponse) {}
+  rpc UpdatePlayer (UpdatePlayerRequest) returns (EmptyResponse) {}
+
+  // Units
+  rpc LeaveUnit (EmptyRequest) returns (EmptyResponse) {}
+  rpc ListUnits (EmptyRequest) returns (EmptyResponse) {}
+  rpc DisbandUnit (EmptyRequest) returns (EmptyResponse) {}
+  rpc FormUnit (EmptyRequest) returns (EmptyResponse) {}
+  rpc JoinUnit (EmptyRequest) returns (EmptyResponse) {}
+
+  // Targets
+  rpc DesignateTarget (EmptyRequest) returns (EmptyResponse) {}
+
+  // Broadcasts
   rpc SendEvent (SendEventRequest) returns (IDResponse) {}
   rpc SendMessage (SendMessageRequest) returns (IDResponse) {}
-  rpc UpdatePlayer (UpdatePlayerRequest) returns (EmptyResponse) {}
 }
 
 message AuthRequest {
