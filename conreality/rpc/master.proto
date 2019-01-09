@@ -40,7 +40,7 @@ service Session {
 
   // Players
   rpc AddPlayer (Player) returns (PlayerID) {}
-  rpc ListPlayers (Nothing) returns (PlayerList) {}
+  rpc ListPlayers (UnitID) returns (PlayerList) {}
   rpc UpdatePlayer (PlayerStatus) returns (Nothing) {}
 
   // Units
@@ -48,11 +48,11 @@ service Session {
   rpc FormUnit (String) returns (UnitID) {}
   rpc JoinUnit (UnitID) returns (Nothing) {}
   rpc LeaveUnit (UnitID) returns (Nothing) {}
-  rpc ListUnits (Nothing) returns (UnitList) {}
+  rpc ListUnits (UnitID) returns (UnitList) {}
 
   // Targets
   rpc DesignateTarget (Target) returns (TargetID) {}
-  rpc ListTargets (Nothing) returns (TargetList) {}
+  rpc ListTargets (UnitID) returns (TargetList) {}
 
   // Broadcasts
   rpc SendEvent (Event) returns (EventID) {}
@@ -60,7 +60,7 @@ service Session {
 }
 
 message Player {
-  string name = 1;
+  string nick = 1;
 }
 
 message Target {
