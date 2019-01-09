@@ -60,26 +60,28 @@ service Session {
 }
 
 message Player {
-  string nick = 1;
+  SessionID session_id = 1;
+  string nick = 2;
 }
 
 message Target {
+  SessionID session_id = 1;
   // TODO
 }
 
 message Event {
-  uint64 session_id = 1;
+  SessionID session_id = 1;
   string predicate = 2;
-  UUID subject_uuid = 3;
-  UUID object_uuid = 4;
+  ObjectID subject_id = 3;
+  ObjectID object_id = 4;
 }
 
 message Message {
-  uint64 session_id = 1;
+  SessionID session_id = 1;
   string text = 2;
 }
 
 message PlayerStatus {
-  uint64 session_id = 1;
+  SessionID session_id = 1;
   uint32 heartbeat = 2;
 }

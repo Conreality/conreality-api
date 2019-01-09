@@ -12,6 +12,10 @@ message MessageID {
   uint64 value = 1;
 }
 
+message ObjectID {
+  uint32 value = 1;
+}
+
 message PlayerID {
   uint32 value = 1;
 }
