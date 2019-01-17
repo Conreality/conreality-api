@@ -4,6 +4,10 @@ syntax = "proto3";
 
 package Conreality.RPC;
 
+message EntityID {
+  uint64 value = 1;
+}
+
 message EventID {
   uint64 value = 1;
 }
@@ -13,11 +17,11 @@ message MessageID {
 }
 
 message ObjectID {
-  uint32 value = 1;
+  uint64 value = 1;
 }
 
 message PlayerID {
-  uint32 value = 1;
+  uint64 value = 1;
 }
 
 message PlayerList {
@@ -29,7 +33,7 @@ message SessionID {
 }
 
 message TargetID {
-  uint32 value = 1;
+  uint64 value = 1;
 }
 
 message TargetList {
@@ -37,7 +41,7 @@ message TargetList {
 }
 
 message UnitID {
-  uint32 value = 1;
+  uint64 value = 1;
 }
 
 message UnitList {
