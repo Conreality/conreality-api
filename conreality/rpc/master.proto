@@ -25,6 +25,9 @@ message AuthResponse {
 service Session {
   rpc Ping (Nothing) returns (Nothing) {}
 
+  // Entities
+  rpc LookupEntityByName (String) returns (EntityID) {}
+
   // Game
   rpc JoinGame (Nothing) returns (PlayerID) {}
   rpc LeaveGame (String) returns (Nothing) {}
