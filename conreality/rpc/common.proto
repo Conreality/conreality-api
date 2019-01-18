@@ -6,11 +6,7 @@ package Conreality.RPC;
 
 message Nothing {}
 
-message UUID {
-  bytes data = 1;
-}
-
-message String {
+message TextString {
   string value = 1;
 }
 

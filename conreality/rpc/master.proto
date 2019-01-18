@@ -26,21 +26,21 @@ service Session {
   rpc Ping (Nothing) returns (Nothing) {}
 
   // Entities
-  rpc LookupEntityByName (String) returns (EntityID) {}
+  rpc LookupEntityByName (TextString) returns (EntityID) {}
 
   // Game
-  rpc GetGameState (Nothing) returns (String) {}
+  rpc GetGameState (Nothing) returns (TextString) {}
   rpc JoinGame (Nothing) returns (PlayerID) {}
-  rpc LeaveGame (String) returns (Nothing) {}
-  rpc PauseGame (String) returns (Nothing) {}
-  rpc StartGame (String) returns (Nothing) {}
-  rpc StopGame (String) returns (Nothing) {}
+  rpc LeaveGame (TextString) returns (Nothing) {}
+  rpc PauseGame (TextString) returns (Nothing) {}
+  rpc StartGame (TextString) returns (Nothing) {}
+  rpc StopGame (TextString) returns (Nothing) {}
 
   // Theater
   rpc DefineTheater (Box) returns (Nothing) {}
 
   // Mission
-  rpc DefineMission (String) returns (Nothing) {}
+  rpc DefineMission (TextString) returns (Nothing) {}
 
   // Players
   rpc AddPlayer (Player) returns (PlayerID) {}
@@ -49,7 +49,7 @@ service Session {
 
   // Units
   rpc DisbandUnit (UnitID) returns (Nothing) {}
-  rpc FormUnit (String) returns (UnitID) {}
+  rpc FormUnit (TextString) returns (UnitID) {}
   rpc JoinUnit (UnitID) returns (Nothing) {}
   rpc LeaveUnit (UnitID) returns (Nothing) {}
   rpc ListUnits (UnitID) returns (UnitList) {}
