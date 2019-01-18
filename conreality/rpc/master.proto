@@ -29,6 +29,7 @@ service Session {
   rpc LookupEntityByName (String) returns (EntityID) {}
 
   // Game
+  rpc GetGameState (Nothing) returns (String) {}
   rpc JoinGame (Nothing) returns (PlayerID) {}
   rpc LeaveGame (String) returns (Nothing) {}
   rpc PauseGame (String) returns (Nothing) {}
