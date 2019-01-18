@@ -92,6 +92,9 @@ message PlayerStatus {
 }
 
 message GameInformation {
-  string state = 1;
-  string title = 2;
+  Location origin = 1;
+  float radius = 2;
+  string state = 3;
+  string title = 4;
+  string mission = 5;
 }

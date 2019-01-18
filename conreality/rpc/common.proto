@@ -10,6 +10,12 @@ message TextString {
   string value = 1;
 }
 
+message Location {
+  double latitude = 1;
+  double longitude = 2;
+  double altitude = 3;
+}
+
 message Box {}
 
 message HelloRequest {
