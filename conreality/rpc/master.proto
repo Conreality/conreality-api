@@ -29,6 +29,7 @@ service Session {
   rpc LookupEntityByName (TextString) returns (EntityID) {}
 
   // Game
+  rpc GetGameInfo (Nothing) returns (GameInformation) {}
   rpc GetGameState (Nothing) returns (TextString) {}
   rpc JoinGame (Nothing) returns (PlayerID) {}
   rpc LeaveGame (TextString) returns (Nothing) {}
@@ -88,4 +89,9 @@ message Message {
 message PlayerStatus {
   SessionID session_id = 1;
   uint32 heartbeat = 2;
+}
+
+message GameInformation {
+  string state = 1;
+  string title = 2;
 }

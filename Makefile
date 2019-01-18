@@ -62,6 +62,7 @@ csharp: $(SOURCES)
 	$(PROTOC) -I. --csharp_out=$@ $^
 	$(PROTOC) -I. --plugin=protoc-gen-grpc=`which grpc_csharp_plugin` --grpc_out=$@ $^
 
+# See: https://grpc.io/docs/quickstart/dart.html
 # See: https://github.com/dart-lang/protobuf
 # See: https://github.com/grpc/grpc-dart
 dart: $(SOURCES)
