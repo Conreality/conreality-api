@@ -53,20 +53,15 @@ service Session {
   rpc FormUnit (TextString) returns (UnitID) {}
   rpc JoinUnit (UnitID) returns (Nothing) {}
   rpc LeaveUnit (UnitID) returns (Nothing) {}
-  rpc ListUnits (UnitID) returns (UnitList) {}
+  rpc ListUnits (UnitID) returns (UnitIDList) {}
 
   // Targets
   rpc DesignateTarget (Target) returns (TargetID) {}
-  rpc ListTargets (UnitID) returns (TargetList) {}
+  rpc ListTargets (UnitID) returns (TargetIDList) {}
 
   // Broadcasts
   rpc SendEvent (Event) returns (EventID) {}
   rpc SendMessage (Message) returns (MessageID) {}
-}
-
-message Player {
-  SessionID session_id = 1;
-  string nick = 2;
 }
 
 message Target {

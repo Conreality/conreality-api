@@ -24,8 +24,19 @@ message PlayerID {
   uint64 value = 1;
 }
 
-message PlayerList {
+message PlayerIDList {
   repeated PlayerID values = 1;
+}
+
+message Player {
+  uint64 id = 1;
+  string nick = 2;
+  string rank = 3;
+  string language = 4;
+}
+
+message PlayerList {
+  repeated Player values = 1;
 }
 
 message SessionID {
@@ -36,7 +47,7 @@ message TargetID {
   uint64 value = 1;
 }
 
-message TargetList {
+message TargetIDList {
   repeated TargetID values = 1;
 }
 
@@ -44,6 +55,15 @@ message UnitID {
   uint64 value = 1;
 }
 
-message UnitList {
+message UnitIDList {
   repeated UnitID values = 1;
+}
+
+message Unit {
+  uint64 id = 1;
+  string name = 2;
+}
+
+message UnitList {
+  repeated Unit values = 1;
 }
