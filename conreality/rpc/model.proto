@@ -12,8 +12,25 @@ message EventID {
   uint64 value = 1;
 }
 
+message Event {
+  uint64 id = 1;
+  uint64 timestamp = 2;
+  string predicate = 3;
+  uint64 subject_id = 4;
+  uint64 object_id = 5;
+}
+
 message MessageID {
   uint64 value = 1;
+}
+
+message Message {
+  uint64 id = 1;
+  uint64 timestamp = 2;
+  uint64 sender_id = 3;
+  uint64 recipient_id = 4;
+  string language = 5;
+  string text = 6;
 }
 
 message ObjectID {
