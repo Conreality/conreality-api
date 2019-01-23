@@ -5,11 +5,11 @@ syntax = "proto3";
 package Conreality.RPC;
 
 message EntityID {
-  uint64 value = 1;
+  uint64 id = 1;
 }
 
 message EventID {
-  uint64 value = 1;
+  uint64 id = 1;
 }
 
 message Event {
@@ -21,7 +21,7 @@ message Event {
 }
 
 message MessageID {
-  uint64 value = 1;
+  uint64 id = 1;
 }
 
 message Message {
@@ -34,15 +34,15 @@ message Message {
 }
 
 message ObjectID {
-  uint64 value = 1;
+  uint64 id = 1;
 }
 
 message PlayerID {
-  uint64 value = 1;
+  uint64 id = 1;
 }
 
 message PlayerIDList {
-  repeated PlayerID values = 1;
+  repeated PlayerID list = 1;
 }
 
 message Player {
@@ -53,27 +53,27 @@ message Player {
 }
 
 message PlayerList {
-  repeated Player values = 1;
+  repeated Player list = 1;
 }
 
 message SessionID {
-  uint64 value = 1;
+  uint64 id = 1;
 }
 
 message TargetID {
-  uint64 value = 1;
+  uint64 id = 1;
 }
 
 message TargetIDList {
-  repeated TargetID values = 1;
+  repeated TargetID list = 1;
 }
 
 message UnitID {
-  uint64 value = 1;
+  uint64 id = 1;
 }
 
 message UnitIDList {
-  repeated UnitID values = 1;
+  repeated UnitID list = 1;
 }
 
 message Unit {
@@ -82,5 +82,5 @@ message Unit {
 }
 
 message UnitList {
-  repeated Unit values = 1;
+  repeated Unit list = 1;
 }
