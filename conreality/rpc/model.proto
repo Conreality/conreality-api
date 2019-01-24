@@ -68,6 +68,11 @@ message TargetIDList {
   repeated TargetID list = 1;
 }
 
+message Target {
+  uint64 id = 1;
+  // TODO
+}
+
 message UnitID {
   uint64 id = 1;
 }

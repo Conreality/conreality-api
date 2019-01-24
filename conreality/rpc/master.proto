@@ -45,7 +45,7 @@ service Session {
 
   // Players
   rpc AddPlayer (Player) returns (PlayerID) {}
-  rpc ListPlayers (UnitID) returns (PlayerList) {}
+  rpc ListPlayers (UnitID) returns (stream Player) {}
   rpc UpdatePlayer (PlayerStatus) returns (Nothing) {}
 
   // Units
@@ -53,22 +53,17 @@ service Session {
   rpc FormUnit (TextString) returns (UnitID) {}
   rpc JoinUnit (UnitID) returns (Nothing) {}
   rpc LeaveUnit (UnitID) returns (Nothing) {}
-  rpc ListUnits (UnitID) returns (UnitIDList) {}
+  rpc ListUnits (UnitID) returns (UnitIDList) {} // TODO: streaming
 
   // Targets
   rpc DesignateTarget (Target) returns (TargetID) {}
-  rpc ListTargets (UnitID) returns (TargetIDList) {}
+  rpc ListTargets (UnitID) returns (stream Target) {}
 
   // Broadcasts
   rpc SendEvent (Event) returns (EventID) {}
   rpc ReceiveEvents (EventID) returns (stream Event) {}
   rpc SendMessage (Message) returns (MessageID) {}
   rpc ReceiveMessages (MessageID) returns (stream Message) {}
-}
-
-message Target {
-  SessionID session_id = 1;
-  // TODO
 }
 
 message PlayerStatus {
