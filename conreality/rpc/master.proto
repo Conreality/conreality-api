@@ -53,7 +53,7 @@ service Session {
   rpc FormUnit (TextString) returns (UnitID) {}
   rpc JoinUnit (UnitID) returns (Nothing) {}
   rpc LeaveUnit (UnitID) returns (Nothing) {}
-  rpc ListUnits (UnitID) returns (UnitIDList) {} // TODO: streaming
+  rpc ListUnits (UnitID) returns (stream Unit) {}
 
   // Targets
   rpc DesignateTarget (Target) returns (TargetID) {}
