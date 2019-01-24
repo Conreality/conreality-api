@@ -61,9 +61,9 @@ service Session {
 
   // Broadcasts
   rpc SendEvent (Event) returns (EventID) {}
-  rpc ReceiveEvents (Nothing) returns (stream Event) {}
+  rpc ReceiveEvents (EventID) returns (stream Event) {}
   rpc SendMessage (Message) returns (MessageID) {}
-  rpc ReceiveMessages (Nothing) returns (stream Message) {}
+  rpc ReceiveMessages (MessageID) returns (stream Message) {}
 }
 
 message Target {
