@@ -4,6 +4,8 @@ syntax = "proto3";
 
 package Conreality.RPC;
 
+import public "conreality/rpc/common.proto";
+
 message EntityID {
   uint64 id = 1;
 }
@@ -48,12 +50,22 @@ message PlayerIDList {
 message Player {
   uint64 id = 1;
   string nick = 2;
-  string rank = 3;
-  string language = 4;
+  string language = 3;
+  string rank = 4;
+  string bio = 5;
+  bytes avatar = 6;
 }
 
 message PlayerList {
   repeated Player list = 1;
+}
+
+message PlayerStatus {
+  uint64 player_id = 1;
+  string state = 2;
+  bool headset = 3;
+  uint32 heartrate = 4;
+  Location location = 5;
 }
 
 message SessionID {
